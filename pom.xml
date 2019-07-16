@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.1.6.RELEASE</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
+  <groupId>com.lemon</groupId>
+  <artifactId>jib</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>jib</name>
+  <description>Demo project for Spring Boot</description>
+
+  <properties>
+    <java.version>1.8</java.version>
+    <registry_url>registry.hub.docker.com/leoeco2000</registry_url>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>com.google.cloud.tools</groupId>
+        <artifactId>jib-maven-plugin</artifactId>
+        <version>1.3.0</version>
+        <configuration>
+          <!--直接指定凭证（替代credHelper）-->
+          <!--                    <auth>-->
+          <!--                        <username>${registry_username}</username>-->
+          <!--                        <password>${registry_password}</password>-->
+          <!--                    </auth>-->
+          <from>
+            <!--base image-->
+            <image>openjdk:alpine</image>
+          </from>
+          <to>
+            <!--目标镜像registry地址，为了方便测试，你需要换成自己的地址，如果你的网络不好，可以选用国内加速器，比如阿里云的-->
+            <!--                        <image>registry.hub.docker.com/leoeco2000/lemon</image>-->
+            <image>${registry_url}/${project.artifactId}</image>
+            <tags>
+              <tag>latest</tag>
+            </tags>
+          </to>
+          <!--                    <container>
+                                  <mainClass>com.ecdata.CmpApplication</mainClass>
+                                  &lt;!&ndash;使用当前时间&ndash;&gt;
+                                  <useCurrentTimestamp>true</useCurrentTimestamp>
+                                  &lt;!&ndash;容器在运行时暴露的端口&ndash;&gt;
+                                  <ports>
+                                      <port>8088</port>
+                                  </ports>
+                              </container>
+                              &lt;!&ndash;如果私有镜像仓库没有启用https，设置allowInsecureRegistries参数为true&ndash;&gt;
+                              <allowInsecureRegistries>false</allowInsecureRegistries>-->
+        </configuration>
+        <!--绑定jib:build到 Maven生命周期，例如package-->
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>build</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
