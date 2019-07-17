@@ -1,3 +1,4 @@
+TEST
 # Getting Started
 
 ### Reference Documentation
