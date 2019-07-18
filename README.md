@@ -1,14 +1,19 @@
-# Getting Started
+参考资料：
 
-### Reference Documentation
-For further reference, please consider the following sections:
+1. [Jib构建你的第一个java镜像](https://blog.csdn.net/mo_xingwang/article/details/81096188)
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
+2. [springboot+Jib+Maven+Idea+Docker 实践](https://blog.csdn.net/shenhonglei1234/article/details/87967088)
 
-### Guides
-The following guides illustrate how to use some features concretely:
+大致步骤：
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
+1. 注册dockerhub账号
+2. 按jib的官方说明下载docker-credential-wincred，放到系统path下
+3. 运行demo
 
+优点：
+
+jib无需dockerfile，可直接在远程私有仓库创建应用镜像
+
+缺点：
+
+需要在服务器手动pull镜像，创建容器，比较麻烦
